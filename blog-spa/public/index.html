@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+  <link rel="icon"
+        href="<%= BASE_URL %>favicon.ico">
+  <title>gkshi_小溪的个人博客 记录学习与生活</title>
+  <meta name="keywords"
+        content="gkshi,小溪,前端开发者,前端工程师,nodejs">
+  <meta name="description"
+        content="这个个人博客是小溪前端开发的起点，学习的信息安全，却发现对前端更感兴趣。希望通过这个博客记录我在前端开发、nodejs等的学习过程以及生活。">
+  <link rel="stylesheet"
+        href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.css"
+        rel="stylesheet">
+  <link href="https://cdn.bootcss.com/KaTeX/0.10.0-rc.1/katex.min.css"
+        rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/monokai-sublime.min.css">
+  <link rel="stylesheet"
+        href="/css/part-css-reset.css">
+  <!-- <style type="text/css">
+    .mk-box {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #f5f5f5;
+      z-index: 9999;
+      opacity: 1;
+      animation: opacity_zoom 1.2s ease-in;
+      animation-fill-mode: forwards;
+    }
+    .mk-box > div {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: 100px;
+      transform: translate(-50%, -50%);
+    }
+    .num {
+      display: inline-block;
+      font-size: 20px;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+    @keyframes opacity_zoom {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+  </style> -->
+  <style>
+    .open-screen-animation {
+      position: absolute;
+      z-index: 1000;
+      width: 100vw;
+      height: 100vh;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .open-screen-loading {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .open-screen-img {
+      width: 30px;
+      height: 30px;
+      animation: icon-rotate .5s linear infinite;
+    }
+
+    .open-screen-text {
+      margin-left: 10px;
+    }
+
+    @keyframes icon-rotate {
+      from {
+        transform: rotateZ(0);
+      }
+
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+
+    .wrapper {
+      width: 100vw;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom right,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0) calc(50% - 1px),
+          rgba(204, 204, 204, 1) 50%,
+          rgba(0, 0, 0, 0) calc(50% + 1px),
+          rgba(0, 0, 0, 0) 100%);
+      animation: wrapper-scale .5s linear 1 forwards;
+    }
+
+    @keyframes wrapper-scale {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(0);
+      }
+    }
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      position: relative;
+      animation: circle-rotate .5s linear 1 forwards;
+    }
+
+    @keyframes circle-rotate {
+      from {
+        transform: rotateZ(0);
+      }
+
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+
+    .ball {
+      position: absolute;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      background-color: #ccc;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="open-screen-animation">
+    <div class="wrapper">
+      <div class="circle">
+        <div class="ball"></div>
+      </div>
+    </div>
+  </div>
+  <div id="app">
+    <p class="open-screen-loading">
+      <img src="<%= BASE_URL %>img/loading.png"
+           alt=""
+           class="open-screen-img">
+      <span class="open-screen-text">内容正在飞速过来~</span>
+    </p>
+  </div>
+  <script type="text/javascript">
+    document.getElementsByClassName('circle')[0].addEventListener('animationend', clearAni)
+
+    function clearAni() {
+      const el = document.getElementsByClassName('open-screen-animation')[0]
+      document.getElementsByClassName('circle')[0].removeEventListener('animationend', clearAni)
+      el.remove()
+    }
+  </script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script
+          src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+  <script
+          src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcss.com/KaTeX/0.10.0-rc.1/katex.min.js"></script>
+  <script
+          src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script> -->
+  <!-- <script src="https://cdn.bootcss.com/vue/2.5.17/vue.js"></script> -->
+  <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+  <script
+          src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script>
+  <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+.citys {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  > .left {
+    :global {
+      .label-input:first-child {
+        margin-bottom: 15px;
+      }
+    }
+    .label {
+      white-space: nowrap;
+    }
+    .cover {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+      > span {
+        padding-right: 10px;
+      }
+    }
+    .location {
+      display: flex;
+      .longitude {
+        margin-right: 15px;
+      }
+    }
+  }
+  > .right {
+    display: flex;
+    align-items: center;
+    > i {
+      color: #ccc;
+      margin: 0 10px;
+    }
+  } 
+}
+
+.pagination {
+  margin: 10px 0;
+  text-align: center;
+}

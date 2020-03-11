@@ -1,0 +1,26 @@
+.reply {
+  .tools {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .smile {
+      margin-right: 200px;
+      font-size: 25px;
+      color: #aaaaaa;
+      &:hover {
+        color: #333333;
+      }
+    }
+    :global {
+      .emojis-r {
+        position: relative;
+      }
+      .emojis-box {
+        z-index: 9;
+        position: absolute;
+        transform: translateX(-90%);
+      }
+    }
+  }
+}
