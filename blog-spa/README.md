@@ -33,7 +33,7 @@ npm run build
 
 ### 查看其它
 
-1.`blog-console`[README.md](https://github.com/gk-shi/blog/blog-console/README.md)
+1.`blog-console`[README.md](/blog-console)
 
-2.`cms-api`[README.md](https://github.com/gk-shi/blog/cms-api/README.md)
+2.`cms-api`[README.md](/cms-api)
 

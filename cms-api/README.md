@@ -69,6 +69,6 @@ node app.js
 
 ### 查看其它
 
-1.`blog-spa`[README.md](https://github.com/gk-shi/blog/blog-spa/README.md)
+1.`blog-spa`[README.md](/blog-spa)
 
-2.`blog-console`[README.md](https://github.com/gk-shi/blog/blog-console/README.md)
+2.`blog-console`[README.md](/blog-console)
