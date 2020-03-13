@@ -145,7 +145,7 @@ export default {
   },
   async created () {
     await this.getArticle()
-    this.makeLog()
+    setTimeout(this.makeLog())
     await this.getComment({
       first: true
     })
@@ -233,6 +233,10 @@ export default {
     justify-content: space-around;
   }
 }
+
+.markdown-body >>> a {
+    color: #0366d6;
+  }
 
 .markdown-body .hljs {
   font-size: 18px;
