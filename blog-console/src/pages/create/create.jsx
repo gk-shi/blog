@@ -165,7 +165,7 @@ class Create extends React.Component {
   }
 
   render() {
-    const { title, $cover, tagStr, outline, created_time, markdown, id, $mark } = this.state
+    const { title, cover, $cover, tagStr, outline, created_time, markdown, id, $mark } = this.state
     return (
       <div>
         <div className={styles['form-item']}>
@@ -201,6 +201,14 @@ class Create extends React.Component {
           <UploadImg
             ref={$cover}
             uploadStatus={info => this.recordUpload(info)} />
+        </div>
+        <div className={styles['form-item']}>
+          <LabelInput
+            label="封面链接"
+            value={cover}
+            onChange={e => this.setState({ cover: e.target.value })}
+            placeholder="封面以该链接权重更大"
+          />
         </div>
         <div className={styles['form-item']}>
           <span className={styles['label-span']}
