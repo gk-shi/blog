@@ -17,9 +17,9 @@
 1.博文 markdown 支持 katex 公式（2020.3.17）
 示例：
 ```bash
-  \```katex
-  x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}   (此处写 katex 公式)
-  \```
+​```katex
+x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}   (此处写 katex 公式)
+​```
 ```
 
 ### 使用
