@@ -26,12 +26,18 @@ marked.setOptions({
  */
 const renderer = new marked.Renderer()
 
-
 renderer.code = function (code, infostring, escaped) {
   const lang = (infostring || '').match(/\S*/)[0]
+  if (lang.toLowerCase() === 'katex') {
+    // 新增处理 katex 公式，放在块级代码块中解析
+    const katexHtml = code.trim().length !== 0 ? window.katex.renderToString(code, {
+      throwOnError: false
+    }) : ''
+    return '<p style="text-align:center">' + katexHtml + '</p>'
+  }
   if (this.options.highlight) {
     const out = this.options.highlight(code, lang)
-    if (out != null && out !== code) {
+    if (out !== null && out !== code) {
       escaped = true
       code = out
     }
