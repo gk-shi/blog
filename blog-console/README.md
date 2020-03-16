@@ -13,6 +13,15 @@
   - 需要在[高德开放平台申请](https://lbs.amap.com/)
   - 此处是为了控制台搜索城市经纬度API服务，因此申请`key`时服务平台选择**web服务**类
 
+### 新增功能
+1.博文 markdown 支持 katex 公式（2020.3.17）
+示例：
+```bash
+```katex
+x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}   (此处写 katex 公式)
+```
+```
+
 ### 使用
 
 ```bash
