@@ -4,7 +4,8 @@
       <h2 class="vtitle">我的小窝</h2>
       <p><a href="https://github.com/gk-shi/blog" target="_blank">查看源码</a><a href="javascript:void(0)" @click="goHome">回到首页</a></p>
     </header>
-    <section class="container">
+    <section class="article markdown-body container" v-html="html"></section>
+    <!-- <section class="container">
       <div>
         <h3>1.为什么要写(更新)这个博客</h3>
         <p>这个博客是我第一个完成的完整的项目。从需求分析到 API 设计再到代码实现，从后端服务到前端页面，都是自己摸索着独立完成的。搭建博客的目的起初很单纯：做一个自己的东西。在搭建的过程中，想法一直在变化，从希望它能成功运行就行，到需要一个瀑布流，需要一个丝滑的过渡动画来提升体验度……现在回过头来看，以前的代码真的可以用惨不忍睹来形容，所以，就有了现在的 2.0 版本（其实前台看起来变化不大，主要是以前代码真的太烂，维护增加功能比重写还费劲o(╯□╰)o）。</p>
@@ -42,23 +43,36 @@
           <p>1.短期来说，关于前台，<code>关于我</code>、<code>关于本站</code>两个页面我需要重新设计，前者需要更新内容，后者我更希望改成支持 markdown ，以后我就能直接在控制台写 markdown 来更新本页面，再也不用像现在这样手写页面。（暴风哭泣！！！o(╥﹏╥)o）</p>
           <p>2.长期来说，我打算将控制台慢慢翻成 <code>ts</code> 版本，前台其实我有在重新设计，将一些功能做的更完善，将体验再提升。准备在 vue 3.x 出来后，作为尝鲜版也写成 <code>ts</code> 版本（希望它到时候对 ts 的支持不会让我翻车~）。</p>
         </div>
-    </section>
+    </section> -->
   </div>
 </template>
 <script>
+import { getWebsiteService } from '../../services/request'
+
 export default {
   name: 'website',
   data () {
     return {
       prefix: process.env.VUE_APP_IMG_PREFIX,
-      consoleUrl: process.env.VUE_APP_CONSOLE
+      consoleUrl: process.env.VUE_APP_CONSOLE,
+      html: ''
     }
   },
   methods: {
     goHome () {
-      console.log('sss')
       this.$router.push({ name: 'home' })
+    },
+    async getWebsite () {
+      try {
+        const ret = await getWebsiteService()
+        this.html = ret.data[0].html
+      } catch (error) {
+        console.log(error)
+      }
     }
+  },
+  created () {
+    this.getWebsite()
   }
 }
 
@@ -117,6 +131,19 @@ header p a:nth-of-type(1) {
 
 .container div .img {
   overflow-x: auto;
+}
+
+.markdown-body >>> a {
+    color: #0366d6;
+  }
+
+.markdown-body .hljs {
+  font-size: 18px;
+}
+
+.markdown-body.article >>> img {
+    display: flex;
+    margin: 0 auto;
 }
 
 @media screen and (min-width: 576px) {

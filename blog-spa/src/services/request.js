@@ -98,3 +98,10 @@ export async function addLinkService (userInfo) {
 export async function getCitysService () {
   return axios.get('/api/citys')
 }
+
+/**
+ * 获取本站介绍
+ */
+export async function getWebsiteService () {
+  return axios.get('/api/website')
+}
