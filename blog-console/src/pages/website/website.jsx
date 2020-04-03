@@ -62,7 +62,7 @@ export default function() {
       }
       openNotificationWithIcon('success', `${isAdd ? '添加' : '修改'}成功！`)
     } catch (error) {
-      openNotificationWithIcon('error', error.response.data.error)
+      openNotificationWithIcon('error', `${isAdd ? '添加' : '修改'}失败！`, error.response.data.error)
     } finally {
       setIsSubmit(false)
     }
@@ -80,7 +80,7 @@ export default function() {
         $mark.current.setDefaultValue(markdown)
       } catch (error) {
         console.log(error)
-        openNotificationWithIcon('error', error.response.data.error)
+        openNotificationWithIcon('error', '获取失败！', error.response.data.error)
       }
     }
     getWebsite()
