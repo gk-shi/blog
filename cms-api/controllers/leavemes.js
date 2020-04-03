@@ -6,7 +6,6 @@ const getTime = require('../utils/getNowTime.js')
 
 // 获取留言
 exports.list = async (req, res, next) => {
-  console.log(req)
   const { page = 0, first = false } = req.query
   // 限制每页的条数
   const limitCount = 10

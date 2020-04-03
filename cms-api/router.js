@@ -12,6 +12,7 @@ const upload = require('./utils/upload.js')
 const mail = require('./controllers/sendEmail.js')
 const city = require('./controllers/city.js')
 const message = require('./controllers/message')
+const website = require('./controllers/website')
 
 // 检验是否登录
 function checkLogin (req, res, next) {
@@ -129,5 +130,11 @@ router
 router
 // .get('/mails', mail.send)
 .post('/mails', mail.send)
+
+// 本站介绍
+router
+  .get('/website', website.list)
+  .post('/website', checkLogin, website.create)
+  .patch('/website', checkLogin, website.update)
 
 module.exports = router
