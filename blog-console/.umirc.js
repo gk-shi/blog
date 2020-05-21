@@ -117,7 +117,7 @@ export default {
             cacheGroups: {
               vendor: {
                 name: 'vendors',
-                test: /^.*node_modules[\\/](?!ag-grid-|lodash|wangeditor|react-virtualized|rc-select|rc-drawer|rc-time-picker|rc-tree|rc-table|rc-calendar|antd).*$/,
+                test: /^.*node_modules[\\/](?!ag-grid-|lodash|wangeditor|react-virtualized|rc-select|rc-drawer|rc-time-picker|rc-tree|rc-table|rc-calendar|antd|marked|for-editor|emoji-picker-react|highlight).*$/,
                 chunks: 'all',
                 priority: 10,
               },
