@@ -1,14 +1,14 @@
 整个博客的代码分为三个部分：
 
-- 前台`blog-spa`
-- 控制台`blog-console`
-- 服务API`cms-api`
+- 前台`spa`
+- 控制台`console`
+- 服务API`server`
 
 可以进入三个目录查看相应的说明：
 
-1.`blog-spa`[README.md](/blog-spa)
+1.`spa`[README.md](/spa)
 
-2.`blog-console`[README.md](/blog-console)
+2.`blog-console`[README.md](/console)
 
-3.`cms-api`[README.md](/cms-api)
+3.`cms-api`[README.md](/server)
 
