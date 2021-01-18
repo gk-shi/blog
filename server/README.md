@@ -35,7 +35,7 @@ module.exports = [
 ]
 ```
 
-2.`cthirdCnfig.ts`:
+2.`thirdCnfig.ts`:
 
 ```javascript
 // 一些项目需要的第三方配置信息

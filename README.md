@@ -8,7 +8,7 @@
 
 1.`spa`[README.md](/spa)
 
-2.`blog-console`[README.md](/console)
+2.`console`[README.md](/console)
 
-3.`cms-api`[README.md](/server)
+3.`server`[README.md](/server)
 
