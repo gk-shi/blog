@@ -5,6 +5,7 @@ import ModalCom from '../modal/Modal'
 import { Pagination } from 'antd'
 import styles from './Reply.less'
 import { openNotificationWithIcon } from '../notification/Notification'
+import marked from '../../utils/marked'
 
 class Reply extends Component {
 
@@ -41,7 +42,7 @@ class Reply extends Component {
     if (isDelete) {
       await this.props.delete(id)
     } else {
-      await this.props.publish(this.state.text)
+      await this.props.publish(marked(this.state.text))
     }
     this.setModal(false, false)
   }

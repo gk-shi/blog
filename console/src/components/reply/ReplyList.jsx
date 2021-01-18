@@ -4,7 +4,7 @@ import { List, Avatar } from 'antd'
 class ReplyList extends React.Component {
 
   preFixAvatar = (imgUrl) => {
-    if (imgUrl.includes('gkshi.com')) return imgUrl
+    if (/https?:\/\//ig.test(imgUrl)) return imgUrl
     return `${process.env.UMI_APP_IMG}/avt/${imgUrl.split('-')[1]}`
   }
 
@@ -34,7 +34,11 @@ class ReplyList extends React.Component {
               }
               description={
                 <>
-                  <p style={{ margin: '5px 0', color: '#000000' }}>{item.content}</p>
+                  <p
+                    className="markdown-body"
+                    style={{ margin: '5px 0', color: '#000000' }}
+                    dangerouslySetInnerHTML={{ __html: item.content }}
+                  ></p>
                   <span>{item.created_time}</span>
                 </>
               }
