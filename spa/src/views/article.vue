@@ -27,7 +27,7 @@
             </p>
           </div>
         </header>
-        <div class="content markdown-body" v-html="article.content"></div>
+        <div class="content blog-article markdown-body" v-html="article.content"></div>
         <footer>
           <div class="comment-box">
             <MessageBox @publish="publishComment" />

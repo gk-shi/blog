@@ -243,16 +243,13 @@ export default defineComponent({
     // 滚动
     const body =  document.documentElement || document.body
     const scrollFn: () => void = (): void => {
-      if (actualLoading.value) return
-      if (isOver.value) {
-        // window.removeEventListener('scroll', scrollFn, false)
-        return
-      }
-      if (body.offsetHeight <= body.scrollTop + Math.max.apply(null, colsTop) + distanceToScroll) {
+      if (actualLoading.value || isOver.value) return
+      const [offsetHeight, scrollTop] = [body.offsetHeight, body.scrollTop]
+
+      if (offsetHeight <= scrollTop + Math.max.apply(null, colsTop) + distanceToScroll) {
         emit('scroll-reach-bottom')
       }
     }
-
 
 
     onMounted(() => {

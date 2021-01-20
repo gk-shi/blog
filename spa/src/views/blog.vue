@@ -21,7 +21,7 @@
       srcKey="cover"
       :gap="gap"
       :colWidth="280"
-      :distanceToScroll="300"
+      :distanceToScroll="200"
       :isLoading="loading"
       :isOver="over"
       @scrollReachBottom="getNext"
@@ -115,6 +115,10 @@ export default defineComponent({
       await fetchList()
       isLoad = false
     }
+
+    // const getNext = debounce(fetchList, 500, { maxWait: 500 })
+    // const getNext = fetchList
+
 
     return {
       currentTag,

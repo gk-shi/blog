@@ -62,7 +62,7 @@ export default function generateToc (): Toc {
   let scrollHandle
 
   const makeToc = (): void => {
-    const articleContent = document.querySelector('.markdown-body') as HTMLElement
+    const articleContent = document.querySelector('.blog-article.markdown-body') as HTMLElement
     tocBackup = articleContent.querySelectorAll('h2, h3, h4')
     const logs: any[] = []
     tocBackup.forEach(t => {

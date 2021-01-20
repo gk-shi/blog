@@ -8,7 +8,7 @@
     <div class="message-wrapper">
       <div class="message-main">
         <p>
-          <span :class="{ 'mes-nickname': true, 'is-admin': message.is_admin }">{{ message.username }}</span
+          <a :href="message.blog || 'javascript:;'" :class="{ 'mes-nickname': true, 'is-admin': message.is_admin }">{{ message.username }}</a
           ><span class="time">留言于 <time>{{ message.time }}</time></span
           ><span class="reply-btn" @click="() => toReply(message.username)">回复</span>
         </p>
