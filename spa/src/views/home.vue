@@ -69,22 +69,16 @@ import { defineComponent, ref } from 'vue'
 
 const code = `
   <p>
-    <span class="red">if</span>&nbsp;
-    <span class="yellow">(</span>sad.
-    <span class="green">now</span>
-    <span class="purple">()</span>
-    <span class="yellow">)</span>&nbsp;
+    <span class="red">if</span>
+    <span class="yellow">(</span>sad.<span class="green">now</span><span class="purple">()</span><span class="yellow">)</span>
     <span class="yellow">{</span>
   </p>
   <p>
-    &nbsp;&nbsp;sad.
-    <span class="green">stop</span>
-    <span class="purple">()</span>
+    &nbsp;&nbsp;sad.<span class="green">stop</span><span class="purple">()</span>
   </p>
   <p>
-    &nbsp;&nbsp;
-    <span class="green">beAwesome</span>
-    <span class="purple">()</span>
+    &nbsp;
+    <span class="green">beAwesome</span><span class="purple">()</span>
   </p>
   <p>
     <span class="yellow">}</span>

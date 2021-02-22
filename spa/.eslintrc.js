@@ -23,6 +23,7 @@ module.exports = {
     'vue/no-setup-props-destructure': 'warn',
     'import/no-absolute-path': 'off',
     'no-multiple-empty-lines': 'off',
+    '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
   }
