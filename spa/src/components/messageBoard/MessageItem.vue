@@ -2,7 +2,7 @@
   <div class="message-item">
     <img
       class="user-avatar"
-      :src="message.avt"
+      :src="message.avt || 'https://s.gravatar.com/avatar/d81bb206a889656035b929cd8bb1ef10?s=80'"
       alt="头像"
     />
     <div class="message-wrapper">
@@ -12,7 +12,7 @@
           ><span class="time">留言于 <time>{{ message.time }}</time></span
           ><span class="reply-btn" @click="() => toReply(message.username)">回复</span>
         </p>
-        <div class="markdown-body mes-content" v-html="message.content">
+        <div class="markdown-body mes-content" v-html="xss(message.content)">
         </div>
       </div>
       <div class="reply-box" v-if="flag">
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, inject, ref } from 'vue'
 import MessageBox from './MessageBox.vue'
 
 export default defineComponent({
@@ -37,6 +37,7 @@ export default defineComponent({
     }
   },
   setup (props, { emit }) {
+    const xss = inject('xss')
     const flag = ref(false)
     const replyUsername = ref('')
     const toReply: (username: string) => void = (username: string): void => {
@@ -50,7 +51,8 @@ export default defineComponent({
       flag,
       replyUsername,
       toReply,
-      publish
+      publish,
+      xss
     }
   }
 })

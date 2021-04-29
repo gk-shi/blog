@@ -7,22 +7,6 @@ import noNeedToken from './utils/noNeedToken'
 import { SECRET } from './utils/jwt'
 import router from './routes'
 
-// 首次运行添加管理员相关信息
-// const { initAdmin } = require('./controllers/admin')
-// const admins = require('./utils/admin.ts')
-// const fs = require('fs')
-
-// 初始化管理员账号
-// if (admins.length !== 0 && process.env.NODE_ENV !== 'development') {
-//   const ads = JSON.parse(JSON.stringify(admins))
-//   initAdmin(ads)
-//   fs.writeFile('./admin.js', 'module.exports = []', { flag:'w',encoding:'utf-8' }, (err) => {
-//     if (err) {
-//       console.log('销毁初始账号信息失败！')
-//     }
-//   })
-// }
-
 
 // 连接数据库
 connect()

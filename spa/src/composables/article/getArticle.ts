@@ -10,7 +10,7 @@ type ArticleContent = {
 /**
  * @description: 获取文章内容
  * @param {string} artId 文章 Id
- * @return {Object} { article: 文章列表，getArticleContent：获取文章接口 }
+ * @return {Object} { article: 文章内容，getArticleContent：获取文章接口 }
  */
 export default function getArticle (artId: string): ArticleContent {
   const article = reactive({})

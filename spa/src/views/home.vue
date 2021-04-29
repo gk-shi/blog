@@ -78,7 +78,7 @@ const code = `
   </p>
   <p>
     &nbsp;
-    <span class="green">beAwesome</span><span class="purple">()</span>
+    <span class="green">beAwesome</span><span class="purple">()</span><span class="cursor">|</span>
   </p>
   <p>
     <span class="yellow">}</span>
@@ -105,7 +105,7 @@ const notes = [poem, sentence, code, english]
 export default defineComponent({
   name: 'Home',
   setup () {
-    const todayWord = ref(notes[Math.floor(Math.random() * 4)])
+    const todayWord = notes[Math.floor(Math.random() * 4)]
     return {
       todayWord
     }
@@ -123,6 +123,26 @@ export default defineComponent({
 
   p {
     margin-top: 10px;
+  }
+
+  .cursor {
+    font-size: 20px;
+    animation: curosrWink 1s linear infinite;
+
+    @keyframes curosrWink {
+      0% {
+        opacity: 1;
+      }
+      49% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
   }
 }
 

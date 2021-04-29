@@ -44,7 +44,7 @@
                     <span class="nick">{{ comment.username }}</span
                     ><span class="time">{{ comment.time }}</span>
                   </p>
-                  <p class="markdown-body content" v-html="comment.content">
+                  <p class="markdown-body content" v-html="xss(comment.content)">
                   </p>
                 </div>
               </div>
@@ -71,6 +71,7 @@ export default defineComponent({
     MessageList
   },
   setup () {
+    const xss = inject('xss')
     const imgPrefix = import.meta.env.VITE_IMG_PREFIX
     const createTip = inject('createTip') as CreateTip
     const blogAvatar = `${imgPrefix}/avatar.jpg?t=${Date.now()}`
@@ -146,7 +147,8 @@ export default defineComponent({
       currentPage,
       bless,
       publishBless,
-      pageChange
+      pageChange,
+      xss
     }
   }
 })

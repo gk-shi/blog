@@ -344,6 +344,18 @@ export async function updateWebsiteService (body) {
   return axios.patch('/website', body)
 }
 
+/**
+ * @description: 获取每日一句
+ */
 export async function getOneOfDay () {
   return axios.get('/oneword')
+}
+
+/**
+ * @description: 百度收录
+ * @param {*} urls 博文链接
+ */
+export async function baiduSeo (urls) {
+  console.log('urls == ', urls)
+  return axios.post('/baiduseo', urls)
 }

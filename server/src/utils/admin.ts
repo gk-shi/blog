@@ -1,7 +1,7 @@
 export default [
   {
-    username: 'xxxxxx@qq.com',
-    passwd: 'xxxxxxx',
+    username: 'gkshi@foxmail.com',
+    passwd: 'shihuang95',
     nickname: '小溪',
     isTest: false,
     avatar: 'https://image.gkshi.com/avatar.jpg'

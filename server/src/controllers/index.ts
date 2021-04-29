@@ -11,6 +11,8 @@ import * as upload from './upload'
 import * as website from './website'
 import * as oneWord from './oneWordEveryday'
 import * as login from './login'
+import * as spider from './spider'
+import * as baiduseo from './baiduseo'
 
 export {
   admin,
@@ -25,5 +27,7 @@ export {
   upload,
   website,
   oneWord,
-  login
+  login,
+  spider,
+  baiduseo
 }

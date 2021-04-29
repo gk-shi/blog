@@ -61,7 +61,7 @@ class Create extends React.Component {
     try {
       const { data: token } = await getQnToken()
       const data = new FormData()
-      data.append('token', token)
+      data.append('token', token.data)
       data.append('key', getNow() + file.name)
       data.append('file', file)
       const ret = await uploadImg(data)

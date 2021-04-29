@@ -5,9 +5,9 @@ import IconText from '../../components/iconText/IconText'
 import { connect } from 'dva'
 import Link from 'umi/link'
 import ModalCom from '../../components/modal/Modal'
-// import styles from './list.less'
+import styles from './list.less'
 import { openNotificationWithIcon } from '../../components/notification/Notification'
-import { deleteBlogService } from '../../services/request'
+import { deleteBlogService, baiduSeo } from '../../services/request'
 
 @connect(state => ({ lists: state.list.lists, count: state.list.count }), {
   getList: (condition) => ({ type: 'list/getList', payload: condition })
@@ -27,6 +27,18 @@ class BlogList extends React.Component {
       id
     })
     this.setModal(true, false)
+  }
+
+  // 百度收录
+  toIncluded = (blogs) => {
+    const urls = blogs.map(item => {
+      return  process.env.UMI_APP_BLOG_URL + '/blog/' + item._id
+    })
+    baiduSeo(urls).then(({ data }) => {
+      if (data && data.errno === 0) {
+        openNotificationWithIcon('success', '收录成功！')
+      }
+    })
   }
 
   handlerGetList = async (page, first) => {
@@ -83,7 +95,12 @@ class BlogList extends React.Component {
           dataSource={showList}
           footer={
             <div>
-              <b>共有{count}条</b>
+              <b>共有{count}条
+                <IconText key="list-vertical-rise-o"
+                  className={styles['included-all']}
+                  text="本页全部收录"
+                  onClick={() => this.toIncluded(showList)}
+                  type="rise-o" /></b>
             </div>
           }
           itemLayout="vertical"
@@ -111,7 +128,11 @@ class BlogList extends React.Component {
                 <IconText key="list-vertical-delete-o"
                   text="删除"
                   onClick={() => this.toDelete(item._id, item.title)}
-                  type="delete-o" />
+                  type="delete-o" />,
+                <IconText key="list-vertical-rise-o"
+                  text="收录"
+                  onClick={() => this.toIncluded([item])}
+                  type="rise-o" />
               ]}
               extra={
                 <img

@@ -1,6 +1,6 @@
 import Router from '@koa/router'
 // import { Context } from 'koa'
-import { link, upload, bless, admin, article, comment, tag, city, message, mail, website, oneWord, login } from './controllers'
+import { link, upload, bless, admin, article, comment, tag, city, message, mail, website, oneWord, login, spider, baiduseo } from './controllers'
 
 
 // 管理员
@@ -99,6 +99,17 @@ const logins: Router = new Router()
 logins
   .post('/', login.login)
 
+
+// 给 google 和 百度爬虫专用
+const spiderBot: Router = new Router()
+spiderBot
+  .get('/:id', spider.postArticle)
+
+
+const baiduSeo: Router = new Router()
+baiduSeo
+  .post('/', baiduseo.baiduSeo)
+
 // 装载所有路由
 const router: Router = new Router()
 
@@ -116,5 +127,7 @@ router
   .use('/website', websites.routes(), websites.allowedMethods())
   .use('/oneword', word.routes(), word.allowedMethods())
   .use('/login', logins.routes(), logins.allowedMethods())
+  .use('/spider', spiderBot.routes(), spiderBot.allowedMethods())
+  .use('/baiduseo', baiduSeo.routes(), baiduSeo.allowedMethods())
   
 export default router

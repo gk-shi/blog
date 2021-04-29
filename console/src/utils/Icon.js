@@ -25,3 +25,4 @@ export { default as LeftOutline } from '@ant-design/icons/lib/outline/LeftOutlin
 export { default as RightOutline } from '@ant-design/icons/lib/outline/RightOutline'
 export { default as DashboardOutline } from '@ant-design/icons/lib/outline/DashboardOutline'
 export { default as BellOutline } from '@ant-design/icons/lib/outline/BellOutline'
+export { default as RiseOutline } from '@ant-design/icons/lib/outline/RiseOutline'

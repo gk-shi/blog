@@ -45,8 +45,8 @@ instance.interceptors.request.use(function (config) {
   const { method, url } = config
   const { user } = window.g_app._store.getState()
 
-  // 忽略高德地图 API
-  if (/v3\/geocode/.test(url)) {
+  // 忽略高德地图 API 和 七牛云
+  if (/(v3\/geocode)|(qiniup)/.test(url)) {
     return config
   }
   /**
@@ -81,8 +81,8 @@ instance.interceptors.request.use(function (config) {
 
 // 对响应错误进行统一拦截处理，包括 errno !== 0 的情况
 instance.interceptors.response.use(response => {
-  // 高德地图 API
-  if (/v3\/geocode/.test(response.config.url)) {
+  // 高德地图 API 和 七牛云
+  if (/(v3\/geocode)|(qiniup)/.test(response.config.url)) {
     return response
   }
   if (response.status === 204) {

@@ -9,5 +9,8 @@ export default {
     accessKey: '',
     secretKey: '',
     scope: 'blog'
+  },
+  baidu: {
+    seoToken: '' // 普通收录 token
   }
 }

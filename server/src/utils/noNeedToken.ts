@@ -10,7 +10,8 @@ const NO_NEED_TOKEN_TABLE = {
   mails: ['post'],
   website: ['get'],
   oneword: ['get'],
-  login: ['post']
+  login: ['post'],
+  spider: ['get']
 }
 
 // 不验证 token 的条件判断

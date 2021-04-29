@@ -1,6 +1,6 @@
 // 存储用户登录后保留的信息
 import { loginService } from '../services/request'
-import { setLoginLocalStorage, setStorage, getStorage } from '../utils/utils'
+import { setLoginLocalStorage, clearLoginLocalStorage, setStorage, getStorage } from '../utils/utils'
 
 const userInfo = {
   nickname: '',
@@ -40,6 +40,7 @@ export default {
       return { ...state, ...action.payload }
     },
     clear () {
+      clearLoginLocalStorage()
       return { ...userInfo }
     },
     updateAvatar (state) {
