@@ -2,15 +2,15 @@ import { ComputedRef, Ref, ref, nextTick } from 'vue'
 
 
 type ImagePreload = {
-  actualList: ref<Array<any>>;
+  actualList: ref<unknown[]>;
   setLastPreloadImgIdx: (idx: number) => void;
-  setActualList: (newList: any[]) => void;
-  imagePreloadHandle: (noPreloadList: Array<any>, actualColWidth: Ref<number>, preloadedFn: Function | undefined, srcKey: string, errorImgHeight: ComputedRef<numnber>, errorImgSrc: string) => void;
+  setActualList: (newList: unknown[]) => void;
+  imagePreloadHandle: (noPreloadList: unknown[], actualColWidth: Ref<number>, preloadedFn: Function | undefined, srcKey: string, errorImgHeight: ComputedRef<numnber>, errorImgSrc: string) => void;
 }
 
 export default function imagePreload (): ImagePreload {
-  const actualList = ref<Array<any>>([])  // 实际用来渲染的列表
-  const setActualList = (newList: any[]): void => {
+  const actualList = ref<unknown[]>([])  // 实际用来渲染的列表
+  const setActualList = (newList: unknown[]): void => {
     actualList.value = newList
   }
 
@@ -21,10 +21,20 @@ export default function imagePreload (): ImagePreload {
     lastPreloadImgIdx = idx
   }
 
-  // 图片预加载
-  const imagePreloadHandle = (noPreloadList: Array<any>, actualColWidth: Ref<number>, preloadedFn: Function | undefined, srcKey: string, errorImgHeight: ComputedRef<numnber>, errorImgSrc: string): void => {
+
+  /**
+   * @description: 图片预加载
+   * @param {unknown[]} noPreloadList 未进行预加载的列表
+   * @param {Ref<number>} actualColWidth 实际列宽
+   * @param {Function | undefined} preloadedFn 预加载完成后的回调
+   * @param {string} srcKey 存放图片链接的键名
+   * @param {ComputedRef<number>} errorImgHeight 错误图片展示高度
+   * @param {string} errorImgSrc 图片加载失败时默认图片地址
+   * @return {void}
+   */
+  const imagePreloadHandle = (noPreloadList: unknown[], actualColWidth: Ref<number>, preloadedFn: Function | undefined, srcKey: string, errorImgHeight: ComputedRef<number>, errorImgSrc: string): void => {
     let tmpIdx = lastPreloadImgIdx === 0 ? 0 : lastPreloadImgIdx + 1
-    const tmpArr: any[] = []
+    const tmpArr: unknown[] = []
     while (tmpIdx < noPreloadList.length) {
       const item = noPreloadList[tmpIdx]
       tmpArr.push(item)

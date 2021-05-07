@@ -5,36 +5,19 @@
     </header>
     <div class="tags-wrapper">
       <div class="tags">
-        <span  @click="() => changeTag('all')" :class="{ tag: true, active: 'all' === currentTag }">全部</span>
-        <span
-          v-for="tag of tags"
-          :key="tag._id"
-          @click="() => changeTag(tag.tag)"
-          :class="{ tag: true, active: currentTag === tag.tag }"
-          >{{ tag.tag }}</span
-        >
+        <span @click="() => changeTag('all')"
+          :class="{ tag: true, active: 'all' === currentTag }">全部</span>
+        <span v-for="tag of tags" :key="tag._id" @click="() => changeTag(tag.tag)"
+          :class="{ tag: true, active: currentTag === tag.tag }">{{ tag.tag }}</span>
       </div>
     </div>
-    <Waterfall
-      class="waterfall"
-      :list="list"
-      srcKey="cover"
-      :gap="gap"
-      :colWidth="280"
-      :distanceToScroll="200"
-      :isLoading="loading"
-      :isOver="over"
-      @scrollReachBottom="getNext"
-    >
+    <Waterfall class="waterfall" :list="list" srcKey="cover" :gap="gap" :colWidth="280"
+      :distanceToScroll="200" :isLoading="loading" :isOver="over" @scrollReachBottom="getNext">
       <template v-slot:default="slotProp">
         <div class="list-item">
           <router-link :to="'/blog/' + slotProp.item._id">
             <div class="cover-wrapper">
-              <img
-              v-if="slotProp.item.cover"
-              :src="slotProp.item.cover"
-              class="cover"
-            />
+              <img v-if="slotProp.item.cover" :src="slotProp.item.cover" class="cover" />
             </div>
             <div class="brief">
               <h3>{{ slotProp.item.title }}</h3>
@@ -44,7 +27,8 @@
           <div class="outline-bottom">
             <p class="article-tags">
               <span>tags</span>
-              <span  @click="() => changeTag(tag)" v-for="tag of slotProp.item.tags" :key="tag" class="tag">{{
+              <span @click="() => changeTag(tag)" v-for="tag of slotProp.item.tags" :key="tag"
+                class="tag">{{
                 tag
               }}</span>
             </p>
@@ -116,9 +100,6 @@ export default defineComponent({
       isLoad = false
     }
 
-    // const getNext = debounce(fetchList, 500, { maxWait: 500 })
-    // const getNext = fetchList
-
 
     return {
       currentTag,
@@ -135,6 +116,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.testt {
+  height: 200px;
+  overflow-y: scroll;
+}
 .blog-list {
   background-color: #dee3e7;
 }
@@ -280,7 +265,7 @@ header {
 
     .cover {
       // transform: scale(1.5);
-      animation: scaleImg .1s linear forwards;
+      animation: scaleImg 0.1s linear forwards;
     }
 
     @keyframes scaleImg {

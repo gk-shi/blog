@@ -7,8 +7,18 @@ type Layout = {
   layoutHandle: (colsTop: Ref<Array<number>>) => void;
 }
 
-export default function layout (list: Ref<Array<any>>, actualColWidth: Ref<number>, actualList: Ref<any[]>, actualCols: Ref<number>, actualGap: number, bottomGap: number): Layout {
-  let lastLayoutImgIdx = 0  // 上一次排版最后排的元素下标
+/**
+ * @description: 排版
+ * @param {Ref<unknown[]>} list 原始列表
+ * @param {Ref<number>} actualColWidth 实际列宽
+ * @param {Ref<unknown[]>} actualList 添加排版数据后的列表
+ * @param {Ref<number>} actualCols 实际列数
+ * @param {number} actualGap 实际间隔
+ * @param {number} bottomGap 底部距离
+ * @return {Layout}
+ */
+export default function layout (list: Ref<unknown[]>, actualColWidth: Ref<number>, actualList: Ref<unknown[]>, actualCols: Ref<number>, actualGap: number, bottomGap: number): Layout {
+  let lastLayoutImgIdx = -1  // 上一次排版最后排的元素下标
 
   const setLastLayoutImgIdx = (idx: number): void => {
     lastLayoutImgIdx = idx
@@ -20,7 +30,8 @@ export default function layout (list: Ref<Array<any>>, actualColWidth: Ref<numbe
   const layoutHandle = (colsTop: Ref<Array<number>>): void => {
     const waterfallItems = document.querySelectorAll('.waterfall-item') as NodeListOf<HTMLElement>
     if (waterfallItems.length === 0) return
-    let idx = lastLayoutImgIdx === 0 ? 0 : lastLayoutImgIdx + 1
+    // 只对新的未排版的元素进行排版，优化性能
+    let idx = lastLayoutImgIdx + 1
     for (; idx < list.value.length; idx++) {
       const eleHeight = waterfallItems[idx].offsetHeight
       const imgHeight = waterfallItems[idx].querySelector('img')?.offsetHeight || 0

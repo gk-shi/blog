@@ -8,8 +8,13 @@ interface CalcuateActualCols {
   calcuateActualCols: (isMobile: boolean) => void;
 }
 
-// type CalcuateCols = (colWidth: Ref<number>, gap: Ref<number>, mobileGap: Ref<number>) => CalcuateActualCols
-
+/**
+ * @description: 计算排布多少列
+ * @param {Ref<number>} colWidth 列宽
+ * @param {Ref<number>} gap 两列的间距
+ * @param {Ref<number>} mobileGap 移动端两列的间距
+ * @return {CalcuateActualCols}
+ */
 export default function calcuateCols (colWidth: Ref<number>, gap: Ref<number>, mobileGap: Ref<number>): CalcuateActualCols {
   const actualColWidth = ref(0)  // 实际列宽
   const actualCols = ref(1)  // 实际列数
