@@ -11,7 +11,7 @@
           :class="{ tag: true, active: currentTag === tag.tag }">{{ tag.tag }}</span>
       </div>
     </div>
-    <Waterfall class="waterfall" :list="list" srcKey="cover" :gap="gap" :colWidth="280"
+    <v3-waterfall class="waterfall" :list="list" srcKey="cover" :gap="12" :colWidth="280"
       :distanceToScroll="200" :isLoading="loading" :isOver="over" @scrollReachBottom="getNext">
       <template v-slot:default="slotProp">
         <div class="list-item">
@@ -36,24 +36,22 @@
           </div>
         </div>
       </template>
-    </Waterfall>
+    </v3-waterfall>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import Waterfall from '../components/waterfall/Waterfall.vue'
+// import Waterfall from '../components/waterfall/Waterfall.vue'
 import { getBlogList, getTag } from '../composables/blog'
 
 
 export default defineComponent({
   name: 'Blog',
   components: {
-    Waterfall
+    // Waterfall
   },
   setup () {
-    const gap = ref(12)
-
     const { currentTag, tags, changeCurrentTag } = getTag()
     const { list, getList } = getBlogList()
 
@@ -105,7 +103,6 @@ export default defineComponent({
       currentTag,
       tags,
       list,
-      gap,
       changeTag,
       getNext,
       loading,
@@ -116,10 +113,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.testt {
-  height: 200px;
-  overflow-y: scroll;
-}
+
 .blog-list {
   background-color: #dee3e7;
 }

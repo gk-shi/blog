@@ -1,5 +1,8 @@
 import { createApp } from 'vue'
 import xss from 'xss'
+import V3waterfall from 'v3-waterfall'
+import 'v3-waterfall/dist/style.css'
+
 import App from './App.vue'
 import router from './router'
 import './index.scss'
@@ -18,4 +21,5 @@ app
 
 app
   .use(router)
+  .use(V3waterfall)
   .mount('#app')

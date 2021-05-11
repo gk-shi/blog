@@ -35,7 +35,7 @@ export default defineComponent({
   props: {
     list: {
       type: Array,
-      default: <T extends object>(): Array<T> => []
+      default: (): unknown[] => []
     },
     colWidth: { // 每列的宽度，不包括两列的间隔
       type: Number,
