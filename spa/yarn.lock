@@ -623,7 +623,7 @@
 
 "@types/vue@^2.0.0":
   version "2.0.0"
-  resolved "https://registry.npm.taobao.org/@types/vue/download/@types/vue-2.0.0.tgz#ec77b3d89591deb9ca5cb052368aa9c32be088e7"
+  resolved "https://registry.npmjs.org/@types/vue/-/vue-2.0.0.tgz#ec77b3d89591deb9ca5cb052368aa9c32be088e7"
   integrity sha1-7Hez2JWR3rnKXLBSNoqpwyvgiOc=
   dependencies:
     vue "*"
@@ -4221,6 +4221,11 @@ util@^0.11.0:
   integrity sha1-MjZzNyDsZLsn9uJvQhqqLhtYjWE=
   dependencies:
     inherits "2.0.3"
+
+v3-waterfall@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/v3-waterfall/-/v3-waterfall-1.0.2.tgz#fdedf88ab91e082365ea0305e52cd5c4a45714c4"
+  integrity sha512-f3yuw71UyOLeDi0mPUK1Gmm2LVHmlxh5KFkUOaIHjwCX/DpVoh59aj8zwdNlJy/W2e1qrjQlVaXxIA9FsTqk1g==
 
 v8-compile-cache@^2.0.3:
   version "2.1.1"

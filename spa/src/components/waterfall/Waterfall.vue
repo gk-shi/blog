@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeUnmount, onMounted, toRefs, watch } from 'vue'
+import { computed, defineComponent, onActivated, onBeforeUnmount, onDeactivated, onMounted, toRefs, watch } from 'vue'
 import { getDevice } from '/@/utils'
 import { calcuateCols, imagePreload, layout } from '/@/composables/waterfall'
 import ERRORIMGSRC from './ErrorImgBase64'
@@ -173,12 +173,19 @@ export default defineComponent({
         firstOrReset()
       }, 500)
     }
+
+    /* 被 keep-alive 包裹时滚动不能触发 */
+    let isActive = true
+    onActivated(() => (isActive = true))
+    onDeactivated(() => (isActive = false))
+
+
     // 滚动
     let scrollElement: Window | HTMLElement = window
     let body = document.documentElement || document.body
     let scrollTimeoutHandle: NodeJS.Timeout
     const scrollFn = (): void => {
-      if (actualLoading.value || isOver.value) return
+      if (actualLoading.value || isOver.value || !isActive) return
       const [scrollHeight, scrollTop, clientHeight] = [body.scrollHeight, body.scrollTop, body.clientHeight]
       if (scrollHeight - scrollTop - clientHeight <= distanceToScroll) {
         clearTimeout(scrollTimeoutHandle)

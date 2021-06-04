@@ -49,7 +49,7 @@ import { getBlogList, getTag } from '../composables/blog'
 export default defineComponent({
   name: 'Blog',
   components: {
-    // Waterfall
+    // 'v3-waterfall': Waterfall
   },
   setup () {
     const { currentTag, tags, changeCurrentTag } = getTag()
