@@ -3,7 +3,7 @@ import { moveGoTo } from '../../utils/index'
 
 
 type Toc = {
-  toc: any[];
+  toc: unknown[];
   maxLevel: number;
   makeToc: () => void;
   goToToc: (idx: number) => void;
@@ -20,8 +20,14 @@ let tocBackup: NodeListOf<Element>
  */
 const goToToc = (idx: number): void => {
   const el = tocBackup[idx] as HTMLElement
-  const scrollTop = (document.documentElement || document.body).scrollTop
-  const target = el.offsetTop - 100 < 0 ? 0 : el.offsetTop - 100
+  const htmlEl = document.documentElement || document.body
+  const { scrollTop, offsetHeight } = htmlEl
+  const innerHeight = window.innerHeight
+  let target = el.offsetTop - 100 < 0 ? 0 : el.offsetTop - 100
+  if (offsetHeight - innerHeight < target) {
+    // 防止往下滚动时 target 大于实际可滚动距离的无限回弹问题
+    target = offsetHeight - innerHeight
+  }
   const direction = scrollTop > target ? 'up' : 'down'
   moveGoTo(target, direction, 12)
 }
@@ -56,7 +62,7 @@ const scrollToFixedToc = (): Function => {
  * @return {*} { toc, maxLevel, makeToc, goToToc, scrollToFixedToc }
  */
 export default function generateToc (): Toc {
-  const toc = ref<any[]>([])
+  const toc = ref<unknown[]>([])
   const maxLevel = ref(3)
 
   let scrollHandle
@@ -64,7 +70,7 @@ export default function generateToc (): Toc {
   const makeToc = (): void => {
     const articleContent = document.querySelector('.blog-article.markdown-body') as HTMLElement
     tocBackup = articleContent.querySelectorAll('h2, h3, h4')
-    const logs: any[] = []
+    const logs: unknown[] = []
     tocBackup.forEach(t => {
       if (Number(t.tagName.toLocaleLowerCase()[1]) < maxLevel.value) {
         maxLevel.value = Number(t.tagName.toLocaleLowerCase()[1])
