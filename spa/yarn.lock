@@ -4222,10 +4222,10 @@ util@^0.11.0:
   dependencies:
     inherits "2.0.3"
 
-v3-waterfall@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/v3-waterfall/-/v3-waterfall-1.0.2.tgz#fdedf88ab91e082365ea0305e52cd5c4a45714c4"
-  integrity sha512-f3yuw71UyOLeDi0mPUK1Gmm2LVHmlxh5KFkUOaIHjwCX/DpVoh59aj8zwdNlJy/W2e1qrjQlVaXxIA9FsTqk1g==
+v3-waterfall@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/v3-waterfall/-/v3-waterfall-1.0.3.tgz#aa0655b3978a46db0ec1591a54e447b6aa4b4dfd"
+  integrity sha512-GzYiVjPRVC2GIN9cbs21RJnLXpk4dpZ7vHMEIW9RB3nSxjCGsxz7CdtbNh//LGWHcgeNALQNHXwdRYNf8KtJ3g==
 
 v8-compile-cache@^2.0.3:
   version "2.1.1"
