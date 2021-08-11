@@ -41,10 +41,10 @@ const scrollToFixedToc = (): Function => {
   const commentEl = document.querySelector('.container footer') as HTMLElement
   const body = document.documentElement || document.body
   const [tocHeight, tocTop] = [tocEl?.offsetHeight, tocEl?.offsetTop]
-  const commentTop = commentEl?.offsetTop
   let isFixed = false
 
   const scrollListener = (): void => {
+    const commentTop = commentEl?.offsetTop
     if (!isFixed && body.scrollTop >= tocTop && body.scrollTop + tocHeight <= commentTop) {
       isFixed = true
       tocEl.style.cssText = 'position: fixed; top: 0px;'

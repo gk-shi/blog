@@ -62,7 +62,7 @@
 </template>
 
 <script lang="ts">
-import { defineAsyncComponent, defineComponent, inject, nextTick, onMounted, watch } from 'vue'
+import { defineAsyncComponent, defineComponent, inject, nextTick, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { publishCommentApi } from '../api'
 import { getStorage, moveGoTo } from '../utils'
@@ -76,6 +76,9 @@ export default defineComponent({
     MessageList: defineAsyncComponent(() => import('../components/messageBoard/MessageList.vue'))
   },
   setup () {
+    // 解决博文列表进入不回弹的问题
+    moveGoTo(0)
+
     const createTip = inject('createTip') as CreateTip
     // 文章 id
     const id = useRoute().params.id as string
@@ -84,11 +87,7 @@ export default defineComponent({
 
     const { toc, maxLevel, goToToc, makeToc } = generateToc()
 
-    watch(article, () => {
-      nextTick(() => {
-        makeToc()
-      })
-    })
+    watch(article, () => nextTick(makeToc))
 
     const { commentList, getArticleComments } = getComment(id)
     const publishComment: (content: string) => Promise<void> = async (content: string): Promise<void> => {
@@ -109,13 +108,6 @@ export default defineComponent({
         }
       })
     }
-
-    onMounted(() => {
-      nextTick(() => {
-        // 解决博文列表进入不回弹的问题
-        moveGoTo(0)
-      })
-    })
 
     return {
       article,
