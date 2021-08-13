@@ -1,6 +1,3 @@
-type GetTime = (needHour?: boolean) => string
-type RandCode = () => string
-
 /**
  * 获取当前时间
  *
@@ -8,7 +5,7 @@ type RandCode = () => string
  *
  * @return {[String]}          [具体时间的字符串]
  */
-export const getNowTime: GetTime = (needHour?: boolean): string => {
+export const getNowTime = (needHour?: boolean): string => {
   const time = new Date()
   const year = time.getFullYear()
   const month = time.getMonth() + 1 > 9 ? time.getMonth() + 1 : '0' + (time.getMonth() + 1)
@@ -26,7 +23,7 @@ export const getNowTime: GetTime = (needHour?: boolean): string => {
  * 
  * @return {[String]}
  */
-export const rand6Code: RandCode = (): string => {
+export const rand6Code = (): string => {
   const codePool = 'qwertyuiopasdfghjklzxcvbnmMNBVCXZLKJHGFDSAPOIUYTREWQ1234567890'
   let code = ''
   for (let i = 0; i < 6; i++) {

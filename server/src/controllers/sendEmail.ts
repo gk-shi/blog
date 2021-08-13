@@ -3,8 +3,9 @@ import { Admin, Code } from '../models'
 import responseHandle from '../utils/responseHandle'
 import { rand6Code } from '../utils/util'
 import sendEmail from '../utils/email'
+import { Errno } from '../utils/errnoEnum'
 
-export async function send (ctx: Context): Promise<any> {
+export async function send (ctx: Context): Promise<void> {
   const body = ctx.request.body
   try {
     const ret = await Admin.findOne({ 'username': body.email }, '_id').exec()
@@ -34,6 +35,6 @@ export async function send (ctx: Context): Promise<any> {
 
     responseHandle({ ctx, status: 201, data: '邮件已发送' })
   } catch (error) {
-    responseHandle({ ctx, errno: -1, errmsg: '发送邮件过程出现问题了~', error })
+    responseHandle({ ctx, errno: Errno.Fail, errmsg: '发送邮件过程出现问题了~', error })
   }
 }

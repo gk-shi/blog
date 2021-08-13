@@ -1,16 +1,16 @@
-import mongoose from 'mongoose'
-const Schema = mongoose.Schema
+import mongoose, { Schema } from 'mongoose'
+const MonSchema = mongoose.Schema
 
 export interface IMessage {
   nickname: string
   title?: string
-  id?: string
+  id?: Schema.Types.ObjectId
   read?: boolean
   created_time: string
 }
 
 // 设计文档结构
-const messageSchema = new Schema({
+const messageSchema = new MonSchema({
   nickname: {
     type: String,
     required: true

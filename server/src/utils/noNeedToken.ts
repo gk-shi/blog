@@ -15,8 +15,7 @@ const NO_NEED_TOKEN_TABLE = {
 }
 
 // 不验证 token 的条件判断
-type NoNeedToken = (ctx: Context) => boolean
-const noNeedToken: NoNeedToken = (ctx: Context) => {
+const noNeedToken = (ctx: Context): boolean => {
   const { method, url } = ctx.request
   const matchRe = url.match(/^\/([\w\d]+)[\/\?]{0,1}/) || []
   const page = matchRe[1]

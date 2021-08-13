@@ -2,10 +2,11 @@
 import Message, { IMessage } from '../models/Message'
 import responseHandle from '../utils/responseHandle'
 import { Context } from 'koa'
+import { Errno } from '../utils/errnoEnum'
 
 
 // 新增通知信息
-export async function addMessage (message: IMessage): Promise<any> {
+export async function addMessage (message: IMessage): Promise<void> {
   try {
     await new Message(message).save()
   } catch (error) {
@@ -14,17 +15,17 @@ export async function addMessage (message: IMessage): Promise<any> {
 }
 
 // 获取通知信息
-export async function list (ctx: Context): Promise<any> {
+export async function list (ctx: Context): Promise<void> {
   try {
     const ret = await Message.find({ read: false }).exec()
     responseHandle({ ctx, data: ret })
   } catch (error) {
-    responseHandle({ ctx, errno: -1, errmsg: '获取通知信息失败~', error })
+    responseHandle({ ctx, errno: Errno.Fail, errmsg: '获取通知信息失败~', error })
   }
 }
 
 // 更新通知消息
-export async function update (ctx: Context): Promise<any> {
+export async function update (ctx: Context): Promise<void> {
   const { id } = ctx.params
   try {
     let ret
@@ -35,6 +36,6 @@ export async function update (ctx: Context): Promise<any> {
     }
     responseHandle({ ctx, status: 201, data: ret })
   } catch (error) {
-    responseHandle({ ctx, errno: -1, errmsg: '更新通知消息失败~', error })
+    responseHandle({ ctx, errno: Errno.Fail, errmsg: '更新通知消息失败~', error })
   }
 }

@@ -1,10 +1,11 @@
 import { Context } from 'koa'
 import responseHandle from '../utils/responseHandle'
 import { Article } from '../models'
+import { Errno } from '../utils/errnoEnum'
 
 
 // 获取文章内容
-export async function postArticle (ctx: Context): Promise<any> {
+export async function postArticle (ctx: Context): Promise<void> {
   const { host, 'user-agent': userAgent } = ctx.request.header
   if (host !== '127.0.0.1:3000' || !/(Baiduspider)|(Googlebot)/ig.test(userAgent)) throw new Error('发生错误')
   const { id } = ctx.params
@@ -20,7 +21,7 @@ export async function postArticle (ctx: Context): Promise<any> {
     const html = formArticleHtml(title, outline, tags, content)
     ctx.body = html
   } catch (error) {
-    responseHandle({ ctx, errno: -1, errmsg: '获取文章内容失败，等等再试吧~', error })
+    responseHandle({ ctx, errno: Errno.Fail, errmsg: '获取文章内容失败，等等再试吧~', error })
   }
 }
 

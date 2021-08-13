@@ -2,15 +2,15 @@
 
 export default {
   email: {
-    user: '',
-    pass: '' // pop3 验证码
+    user: '1160684431@qq.com',
+    pass: 'xnaacxnluciogfja' // pop3 验证码
   },
   qiniu: {
-    accessKey: '',
-    secretKey: '',
+    accessKey: '7U-DAzDA1_EtREmjGHoyhgCf1OTdPED9PMnu1RKT',
+    secretKey: 'c7RhmJRl12s4kF5NmBEKKqwfeP3xH1Xmb4wLaLMg',
     scope: 'blog'
   },
   baidu: {
-    seoToken: '' // 普通收录 token
+    seoToken: '2g0IKofrkUm3Bg0q'
   }
 }

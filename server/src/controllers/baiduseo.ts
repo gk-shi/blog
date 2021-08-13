@@ -1,6 +1,7 @@
 
 import axios from 'axios'
 import { Context } from 'koa'
+import { Errno } from '../utils/errnoEnum'
 import responseHandle from '../utils/responseHandle'
 import thirdConfig from '../utils/thirdConfig'
 
@@ -10,6 +11,6 @@ export async function baiduSeo (ctx: Context): Promise<any> {
   if (ret && ret.success) {
     responseHandle({ ctx, data: ret })
   } else {
-    responseHandle({ ctx, errno: -1, errmsg: ret })
+    responseHandle({ ctx, errno: Errno.Fail, errmsg: ret })
   }
 }

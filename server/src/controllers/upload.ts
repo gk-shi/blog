@@ -2,6 +2,7 @@ import qiniu from 'qiniu'
 import { Context } from 'koa'
 import config from '../utils/thirdConfig'
 import responseHandle from '../utils/responseHandle'
+import { Errno } from '../utils/errnoEnum'
 
 // 七牛云密钥
 const accessKey = config.qiniu.accessKey
@@ -27,6 +28,6 @@ export function getUploadToken (ctx: Context): void {
     const uploadToken = putPolicy.uploadToken(mac)
     responseHandle({ ctx, data: uploadToken })
   } catch (error) {
-    responseHandle({ ctx, errno: -1, errmsg: '获取上传凭证失败~', error })
+    responseHandle({ ctx, errno: Errno.Fail, errmsg: '获取上传凭证失败~', error })
   }
 }

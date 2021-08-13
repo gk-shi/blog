@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const mongoUrl = process.env.NODE_ENV === 'development' ? 'mongodb://localhost:27017/blog-bp' : 'mongodb://blogAdmin:blogPwd@127.0.0.1:27017/blog'
 
-export const connect: () => void = (): void => {
+export const connect = (): void => {
   mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useFindAndModify: false,

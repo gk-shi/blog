@@ -6,6 +6,7 @@ import kjwt from 'koa-jwt'
 import noNeedToken from './utils/noNeedToken'
 import { SECRET } from './utils/jwt'
 import router from './routes'
+import { Errno } from './utils/errnoEnum'
 
 
 // 连接数据库
@@ -24,7 +25,7 @@ app
         ctx.status = 401
         ctx.body = {
           message: 'Login expired',
-          errno: -2,
+          errno: Errno.Expired,
           errmsg: '登录信息过期，请重新登录'
         }
       }

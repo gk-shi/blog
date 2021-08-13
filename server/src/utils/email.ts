@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 import config from './thirdConfig'
 
 // async..await is not allowed in global scope, must use a wrapper
-export default async (toUser: string, message: string): Promise<any> => {
+export default async (toUser: string, message: string): Promise<void> => {
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     host: 'smtp.qq.com',

@@ -1,6 +1,7 @@
 import { Context } from 'koa'
+import { Errno } from './errnoEnum'
 
-interface IRes {
+export interface IRes {
   ctx: Context
   status?: number
   errno?: number
@@ -13,7 +14,7 @@ type ResponseHandle = (args: IRes) => void
 
 
 const responseHandle: ResponseHandle = (args: IRes): void => {
-  const { ctx, status = 200, errno = 0, data, errmsg, error } = args
+  const { ctx, status = 200, errno = Errno.Success, data, errmsg, error } = args
 
   ctx.status = status
   if (/^2.*/.test(String(status))) {

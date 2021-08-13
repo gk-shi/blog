@@ -7,7 +7,7 @@ export interface OneWord {
   note: string // 中文内容
   english: string // 英文内容
 }
-export async function getOneWordEveryDay (ctx: Context): Promise<any> {
+export async function getOneWordEveryDay (ctx: Context): Promise<void> {
 
   let oneWord: OneWord
   try {

@@ -3,8 +3,9 @@ import md5 from 'blueimp-md5'
 import responseHandle from '../utils/responseHandle'
 import { Context } from 'koa'
 import { sign } from '../utils/jwt'
+import { Errno } from '../utils/errnoEnum'
 
-export async function login (ctx: Context): Promise<any> {
+export async function login (ctx: Context): Promise<void> {
   const body = ctx.request.body
   body.passwd = md5(md5(body.passwd))
   try {
@@ -20,6 +21,6 @@ export async function login (ctx: Context): Promise<any> {
     const token = sign({})
     responseHandle({ ctx, data: { userInfo, token } })
   } catch (error) {
-    responseHandle({ ctx, errno: -1, errmsg: `登录过程发生错误~${error}`, error })
+    responseHandle({ ctx, errno: Errno.Fail, errmsg: `登录过程发生错误~${error}`, error })
   }
 }
